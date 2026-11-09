@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Composer Dependency Graph</title>
+<style>/*@CSS@*/</style>
+</head>
+<body>
+<div id="app">
+  <header id="bar">
+    <button class="ib" id="btn-side" title="Toggle legend &amp; filters">
+      <svg viewBox="0 0 16 16"><path d="M2 3.5h12M2 8h12M2 12.5h12"/></svg>
+    </button>
+    <div class="title">Dependency Graph<span id="proj"></span></div>
+    <select id="projsel" title="Composer project" hidden></select>
+    <div class="search">
+      <svg class="sicon" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+      <input id="q" type="text" placeholder="Search packages…  ( / or Ctrl+F )" autocomplete="off" spellcheck="false">
+      <span id="qcount"></span>
+      <div id="sr" hidden></div>
+    </div>
+    <div class="tools">
+      <button class="ib" id="btn-fit" title="Fit to screen (0)">
+        <svg viewBox="0 0 16 16"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg>
+      </button>
+      <button class="ib" id="btn-zout" title="Zoom out (-)"><svg viewBox="0 0 16 16"><path d="M3 8h10"/></svg></button>
+      <span id="zoom">100%</span>
+      <button class="ib" id="btn-zin" title="Zoom in (+)"><svg viewBox="0 0 16 16"><path d="M3 8h10M8 3v10"/></svg></button>
+      <button class="ib" id="btn-reload" title="Reload from composer.lock">
+        <svg viewBox="0 0 16 16"><path d="M13.5 8a5.5 5.5 0 1 1-1.7-4M13.5 2.5v3h-3"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="body">
+    <aside id="side">
+      <section>
+        <h3><svg viewBox="0 0 16 16"><circle cx="4" cy="4" r="2"/><circle cx="12" cy="4" r="2"/><circle cx="8" cy="12" r="2"/><path d="M4 6v1.5a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6M8 8.5V10"/></svg>Legend</h3>
+        <ul id="legend"></ul>
+      </section>
+      <section>
+        <h3><svg viewBox="0 0 16 16"><path d="M2 3h12l-4.5 5.5V13l-3-1.5V8.5z"/></svg>Filters</h3>
+        <label class="chk"><input type="checkbox" id="f-transitive"><span></span>Show transitive</label>
+        <label class="chk"><input type="checkbox" id="f-dev"><span></span>Show dev dependencies</label>
+        <label class="chk"><input type="checkbox" id="f-constraints"><span></span>Show constraints</label>
+        <label class="chk"><input type="checkbox" id="f-conflicts"><span></span>Show all conflicts</label>
+        <label class="chk"><input type="checkbox" id="f-platform"><span></span>Show platform (php, ext-*)</label>
+      </section>
+      <section>
+        <h3><svg viewBox="0 0 16 16"><path d="M2 4h12M4 8h8M6 12h4"/></svg>Levels</h3>
+        <div class="row">
+          <select id="levels"></select>
+          <button class="btn" id="btn-expand">Expand all</button>
+          <button class="btn" id="btn-collapse">Collapse</button>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <select id="layout" title="How columns are assigned">
+            <option value="flow">Layout: flow (no back edges)</option>
+            <option value="depth">Layout: distance from root</option>
+          </select>
+        </div>
+      </section>
+      <section>
+        <h3><svg viewBox="0 0 16 16"><path d="M3 13V8M8 13V3M13 13V6"/></svg>Statistics</h3>
+        <div id="stats"></div>
+      </section>
+      <section>
+        <h3><svg viewBox="0 0 16 16"><path d="M8 2l1.8 3.7 4 .6-2.9 2.8.7 4L8 11.2 4.4 13l.7-4L2.2 6.3l4-.6z"/></svg>Most required</h3>
+        <ul id="top"></ul>
+      </section>
+    </aside>
+
+    <main id="stage">
+      <svg id="svg" xmlns="http://www.w3.org/2000/svg">
+        <defs id="defs"></defs>
+        <g id="vp"><g id="edges"></g><g id="labels"></g><g id="nodes"></g></g>
+      </svg>
+      <div id="banner" hidden></div>
+      <div id="focusbar" hidden></div>
+      <div id="hint">Click a package · double-click to open its composer.json · drag to pan · wheel to zoom · arrow keys to walk the graph</div>
+      <aside id="dp" hidden></aside>
+      <div id="empty" hidden></div>
+    </main>
+  </div>
+</div>
+
+<script>/*@BRIDGE@*/</script>
+<script type="application/json" id="cg-payload">/*@PAYLOAD@*/</script>
+<script>/*@JS@*/</script>
+</body>
+</html>

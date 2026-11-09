@@ -1,0 +1,16 @@
+{
+  "packages": [
+    {"name":"magento/framework","version":"103.0.6","description":"N/A","require":{"psr/log":"^3.0","laminas/laminas-servicemanager":"^3.17","symfony/console":"^6.4","laminas/laminas-db":"^3.8"}},
+    {"name":"magento/module-catalog","version":"103.0.6","description":"Catalog module","require":{"magento/framework":"103.0.6","psr/log":"^3.0","laminas/laminas-stdlib":"^3.15"}},
+    {"name":"magento/module-checkout","version":"100.4.6","description":"Checkout module","require":{"magento/framework":"103.0.6","magento/module-catalog":"103.0.6","laminas/laminas-servicemanager":"^3.17"},"conflict":{"symfony/console":"<6.0"}},
+    {"name":"laminas/laminas-db","version":"3.8.0","description":"Database abstraction","require":{"laminas/laminas-stdlib":"^3.15","laminas/laminas-servicemanager":"^3.17"}},
+    {"name":"guzzlehttp/guzzle","version":"7.8.1","description":"HTTP client","require":{"psr/log":"^3.0","symfony/console":"^6.4"}},
+    {"name":"symfony/console","version":"6.4.8","description":"Eases the creation of beautiful and testable command line interfaces","require":{"php":">=8.1"}},
+    {"name":"psr/log","version":"3.0.0","description":"Common interface for logging libraries","require":{"php":">=8.0"}},
+    {"name":"laminas/laminas-stdlib","version":"3.15.0","description":"SPL extensions","require":{"php":">=8.1"}},
+    {"name":"laminas/laminas-servicemanager","version":"3.17.0","description":"Factory-driven dependency injection container","require":{"laminas/laminas-stdlib":"^3.15","psr/log":"^3.0"}}
+  ],
+  "packages-dev": [
+    {"name":"phpunit/phpunit","version":"10.5.20","description":"The PHP Unit Testing framework.","require":{"php":">=8.1","symfony/console":"^6.4"}}
+  ]
+}

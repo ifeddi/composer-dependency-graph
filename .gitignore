@@ -1,0 +1,7 @@
+.gradle/
+.intellijPlatform/
+build/
+.idea/
+dev/preview.html
+.claude/
+*.iml
