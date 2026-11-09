@@ -1,0 +1,39 @@
+<idea-plugin>
+    <id>com.issam.composergraph</id>
+    <name>Composer Dependency Graph</name>
+    <vendor url="https://github.com/ifeddi/composer-dependency-graph">Issam Feddi</vendor>
+
+    <description><![CDATA[
+        Visualize the Composer dependency graph of your PHP project right inside PhpStorm.
+        <ul>
+            <li>Reads <code>composer.lock</code> (falls back to <code>vendor/composer/installed.json</code> or <code>composer.json</code>).</li>
+            <li>Interactive graph: root, direct, transitive and dev dependencies, version constraints and conflicts.</li>
+            <li>Search, focus on dependents/dependencies, "why is this installed?" path, expand/collapse levels.</li>
+            <li>Double-click a package to open its <code>composer.json</code> from <code>vendor/</code>.</li>
+        </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Composer Graph"
+                    anchor="right"
+                    icon="/icons/composerGraph.svg"
+                    factoryClass="com.issam.composergraph.ComposerGraphToolWindowFactory"/>
+        <projectService serviceImplementation="com.issam.composergraph.ComposerGraphService"/>
+        <postStartupActivity implementation="com.issam.composergraph.ComposerGraphStartup"/>
+        <notificationGroup id="Composer Graph" displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <action id="ComposerGraph.Show"
+                class="com.issam.composergraph.ShowComposerGraphAction"
+                text="Show Composer Dependency Graph"
+                description="Open the Composer dependency graph for this project"
+                icon="/icons/composerGraph.svg">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

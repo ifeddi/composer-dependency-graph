@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-label="Composer Dependency Graph for PhpStorm">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0e17"/>
+      <stop offset="1" stop-color="#171230"/>
+    </linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#b9a5ff"/>
+    </linearGradient>
+    <marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" fill="#3b82f6"/></marker>
+    <marker id="a-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" fill="#14b8a6"/></marker>
+    <marker id="a-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" fill="#f5a524"/></marker>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#1b2136"/></pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1280" height="340" fill="url(#bg)"/>
+  <rect width="1280" height="340" fill="url(#dots)"/>
+
+  <!-- title -->
+  <g font-family="'Segoe UI', system-ui, -apple-system, Roboto, sans-serif">
+    <text x="64" y="132" font-size="50" font-weight="700" fill="url(#title)">Composer</text>
+    <text x="64" y="188" font-size="50" font-weight="700" fill="url(#title)">Dependency Graph</text>
+    <text x="64" y="232" font-size="19" fill="#8a93ab">See which packages constrain each other — before you run</text>
+    <text x="64" y="258" font-size="19" fill="#8a93ab"><tspan fill="#c9cfe0" font-family="Consolas, monospace">composer update</tspan>. A native graph tool window for PhpStorm.</text>
+    <g font-size="13" font-weight="600">
+      <rect x="64" y="284" width="104" height="26" rx="13" fill="#1a2140" stroke="#3b82f6"/><text x="116" y="302" text-anchor="middle" fill="#9cc0ff">search</text>
+      <rect x="178" y="284" width="104" height="26" rx="13" fill="#10282a" stroke="#14b8a6"/><text x="230" y="302" text-anchor="middle" fill="#6fe0d2">focus</text>
+      <rect x="292" y="284" width="132" height="26" rx="13" fill="#2b2110" stroke="#f5a524"/><text x="358" y="302" text-anchor="middle" fill="#ffcf75">dev vs prod</text>
+    </g>
+  </g>
+
+  <!-- mini graph -->
+  <g font-family="'Segoe UI', system-ui, sans-serif">
+    <!-- edges -->
+    <g fill="none" stroke-width="1.8">
+      <path d="M770 170 C 810 170, 810 92, 850 92" stroke="#3b82f6" marker-end="url(#a-blue)"/>
+      <path d="M770 170 C 810 170, 810 170, 850 170" stroke="#3b82f6" marker-end="url(#a-blue)"/>
+      <path d="M770 170 C 810 170, 810 248, 850 248" stroke="#3b82f6" marker-end="url(#a-blue)"/>
+      <path d="M770 170 C 800 170, 820 300, 850 300" stroke="#f5a524" stroke-dasharray="2 4" marker-end="url(#a-orange)"/>
+      <path d="M1000 92 C 1040 92, 1040 60, 1080 60" stroke="#14b8a6" marker-end="url(#a-teal)"/>
+      <path d="M1000 92 C 1040 92, 1040 126, 1080 126" stroke="#14b8a6" marker-end="url(#a-teal)"/>
+      <path d="M1000 170 C 1040 170, 1040 126, 1080 126" stroke="#14b8a6" marker-end="url(#a-teal)"/>
+      <path d="M1000 170 C 1040 170, 1040 204, 1080 204" stroke="#14b8a6" marker-end="url(#a-teal)"/>
+      <path d="M1000 248 C 1040 248, 1040 204, 1080 204" stroke="#14b8a6" marker-end="url(#a-teal)"/>
+      <path d="M1000 248 C 1040 248, 1040 282, 1080 282" stroke="#14b8a6" marker-end="url(#a-teal)"/>
+      <path d="M1000 300 C 1040 300, 1040 282, 1080 282" stroke="#f5a524" stroke-dasharray="2 4" marker-end="url(#a-orange)"/>
+      <path d="M1000 170 C 1060 140, 1060 262, 1080 282" stroke="#ef4444" stroke-dasharray="6 4" opacity=".9"/>
+    </g>
+    <!-- root -->
+    <g filter="url(#glow)"><rect x="604" y="146" width="166" height="48" rx="9" fill="#121829" stroke="#8b5cf6" stroke-width="2.2"/></g>
+    <text x="618" y="168" font-size="12.5" font-weight="600" fill="#e6e9f2">my-app/shop</text>
+    <text x="618" y="184" font-size="11" fill="#8a93ab" font-family="Consolas, monospace">root project</text>
+    <!-- direct -->
+    <g stroke-width="1.5" fill="#121829">
+      <rect x="850" y="68" width="150" height="48" rx="9" stroke="#3b82f6"/>
+      <rect x="850" y="146" width="150" height="48" rx="9" stroke="#3b82f6"/>
+      <rect x="850" y="224" width="150" height="48" rx="9" stroke="#3b82f6"/>
+      <rect x="850" y="276" width="150" height="48" rx="9" stroke="#f5a524"/>
+    </g>
+    <g font-size="12.5" font-weight="600" fill="#e6e9f2">
+      <text x="864" y="90">symfony/console</text><text x="864" y="168">doctrine/orm</text><text x="864" y="246">guzzlehttp/guzzle</text><text x="864" y="298">phpunit/phpunit</text>
+    </g>
+    <g font-size="11" fill="#8a93ab" font-family="Consolas, monospace">
+      <text x="864" y="106">v6.4.8</text><text x="864" y="184">3.6.9</text><text x="864" y="262">7.8.1</text><text x="864" y="314">10.5.20</text>
+    </g>
+    <!-- transitive -->
+    <g stroke-width="1.5" fill="#121829" stroke="#14b8a6">
+      <rect x="1080" y="38" width="150" height="44" rx="9"/>
+      <rect x="1080" y="104" width="150" height="44" rx="9"/>
+      <rect x="1080" y="182" width="150" height="44" rx="9"/>
+      <rect x="1080" y="260" width="150" height="44" rx="9"/>
+    </g>
+    <g font-size="12" font-weight="600" fill="#e6e9f2">
+      <text x="1094" y="58">psr/log</text><text x="1094" y="124">symfony/string</text><text x="1094" y="202">doctrine/dbal</text><text x="1094" y="280">psr/http-message</text>
+    </g>
+    <g font-size="10.5" fill="#8a93ab" font-family="Consolas, monospace">
+      <text x="1094" y="73">3.0.0</text><text x="1094" y="139">v6.4.8</text><text x="1094" y="217">3.8.4</text><text x="1094" y="295">2.0</text>
+    </g>
+  </g>
+</svg>
