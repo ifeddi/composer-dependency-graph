@@ -93,6 +93,13 @@ function buildModel() {
   function addEdge(from, name, constraint, kind) {
     resolve(name).forEach(function (to) {
       if (to === from) return;
+      // several requirements can resolve to the same package (e.g. symfony/*-contracts replaced by symfony/contracts): merge
+      var dup = from.out.filter(function (x) { return x.to === to && x.kind === kind; })[0];
+      if (dup) {
+        if (constraint && dup.constraint.split(' + ').indexOf(String(constraint)) < 0) dup.constraint += (dup.constraint ? ' + ' : '') + constraint;
+        if (to.name !== name) dup.via = (dup.via ? dup.via + ', ' : '') + name;
+        return;
+      }
       var e = { id: edges.length, from: from, to: to, constraint: String(constraint || ''), kind: kind, via: to.name !== name ? name : null };
       edges.push(e); from.out.push(e); to.inn.push(e);
       if (to.stub && !to.version) to.version = e.constraint;
